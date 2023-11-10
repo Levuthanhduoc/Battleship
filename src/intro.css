@@ -1,0 +1,31 @@
+#introBox{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+    align-items: center;
+    height: 500px;
+    justify-content: center;
+}
+#introBox>div:first-child{
+    font-size: 100px;
+}
+#introForm{
+    width: 150px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    border: black 1px solid;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.nameBox{
+    gap: 20px;
+}
+
+#loginButton{
+    width: 60px;
+    height: 20px;
+}

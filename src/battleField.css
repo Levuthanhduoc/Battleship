@@ -1,0 +1,20 @@
+#battleField{
+    display: grid;
+    grid-template-columns: 660px 260px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.playerField{
+    display: grid;
+    grid-template-columns: repeat(11,60px);
+    grid-template-rows: repeat(11,60px);
+    border: black solid 1px;
+}
+.messageBox{
+    border: black solid 1px;
+    height: 400px;
+}
+.smallBox{
+    border: rgb(173, 173, 173) solid 1px;
+}
