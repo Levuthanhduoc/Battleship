@@ -1,4 +1,5 @@
 #battleField{
+    position: relative;
     display: grid;
     grid-template-columns: 660px 260px;
     align-items: center;
@@ -7,14 +8,82 @@
 }
 .playerField{
     display: grid;
+    position: relative;
     grid-template-columns: repeat(11,60px);
     grid-template-rows: repeat(11,60px);
     border: black solid 1px;
 }
 .messageBox{
+    position: relative;
+    overflow: auto;
     border: black solid 1px;
     height: 400px;
 }
 .smallBox{
     border: rgb(173, 173, 173) solid 1px;
 }
+
+.ship{
+    background-color: green;
+}
+
+.shipError{
+    background-color: red;
+}
+
+.alertBox{
+    color: red;
+    position: absolute;
+    bottom: 0;
+}
+
+#previewBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px ;
+    border: rgb(173, 173, 173) solid 1px;
+}
+
+.hit{
+    background-color: rgb(177, 145, 145);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.miss{
+    background-color: rgb(51, 168, 223);
+}
+
+.turnBlock{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    font-size: large;
+    font-weight: bold;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(158, 157, 157,0.5);
+}
+
+.nameTag{
+    size: 10px;
+}
+
+.Carrier{
+    background-color: rgb(130, 130, 209);
+}
+.Battleship{
+    background-color: rgb(110, 110, 177);
+}
+.Destroyer{
+    background-color: rgb(91, 91, 145);
+}
+.Submarine{
+    background-color: rgb(63, 63, 100);
+}
+.PatrolBoat{
+    background-color: rgb(43, 43, 68);
+} 
