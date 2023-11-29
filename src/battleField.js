@@ -225,6 +225,39 @@ function collectLocation(shipName){
     return shipLocation;
 }
 
+function placeShipComfirm(target){
+    const past = document.querySelector("#shipComfirm");
+    if(past !== null && past !== undefined){
+        past.remove();
+    }
+    const Box = document.createElement("div");
+    Box.id = "shipComfirm";
+    const textBox = document.createElement("p");
+    textBox.textContent ="You ship placement will be save, Are you sure ?";
+    const buttonText = ["yes","no"]
+    const ButtonBox = document.createElement("div");
+    for(let i = 0;i<2;i+=1){
+        const button = document.createElement("button");
+        button.classList.add(`${buttonText[i]}Button`);
+        button.textContent = `${buttonText[i]}`;
+        ButtonBox.append(button);
+    }
+    Box.append(textBox,ButtonBox);
+    target.append(Box);
+
+    return new Promise((resolve)=>{
+        Box.addEventListener("click",(e)=>{
+            if(e.target.nodeName === "BUTTON"){
+                if(e.target.classList.contains("yesButton")){
+                    resolve(true);
+                }
+                Box.remove();
+            }
+            
+        })
+    })
+}
+
 function setUp(mess){
     if(status.layout === false){
         return null;
@@ -235,7 +268,11 @@ function setUp(mess){
     chooseShipType();
     previewRotationButton();
     const end = new Promise((resolve)=>{
-        setButton().addEventListener("click",()=>{
+        setButton().addEventListener("click",async ()=>{
+            const confirm = await placeShipComfirm(messbox);
+            if(!confirm){
+                return;
+            }
             const result = checkMissingShip();
             if(result[0] === undefined){
                 resolve(status.shipLocation);
@@ -311,7 +348,7 @@ function turnBlock(player1,player2){
                 nowBlock = player2;
                 text = "Player2 Turn";
             }else{
-                nowBlock = player1; 
+                nowBlock = player1;
                 text = "Player1 Turn";
             } 
         }  
@@ -322,7 +359,10 @@ function turnBlock(player1,player2){
             bk.remove();
         }
     }
-    return {add,remove}
+    const scroll = ()=>{
+        nowBlock.scrollIntoView();
+    }
+    return {add,remove,scroll}
 }
 
 function blockInput(target){
@@ -378,15 +418,15 @@ function battle(player1Data,player2Data){
             if(condition){
                 return;
             }
-            playerField[(i+1)%2].scrollIntoView();
             Block.remove();
             Block.add();
+            Block.scroll();
             
             const result = playerData[i].receiveAttack([x,y]);
             status.current = [i+1,[x,y]];
             if(result){
                 e.target.classList.add("hit");
-                e.target.textContent = "X"
+                e.target.textContent = "X";
             }else{
                 e.target.classList.add("miss");
             }

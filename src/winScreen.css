@@ -17,13 +17,14 @@ body{
     gap: 10px;
     background-color: rgb(233, 233, 142);
     border: 1px black solid;
-    top:calc(100% - var(--winScreenHeight));
-    left: calc(50% - var(--winScreenWidth));
+    top:calc(55% - var(--winScreenHeight));
+    left: calc(55% - var(--winScreenWidth));
     width: var(--winScreenWidth);
     height: var(--winScreenHeight);
 }
 #winScreen>div:nth-child(1){
     font-size: 50px;
+    text-align: center;
 }
 #winScreen>div:nth-child(2){
     display: flex;
@@ -32,6 +33,6 @@ body{
 }
 
 #RestartButton,#EndButton{
-    width: 100px;
-    height: 50px;
+    width: 90px;
+    height: 40px;
 }

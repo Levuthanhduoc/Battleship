@@ -60,7 +60,8 @@ async function start(){
                     bot.isAttackHit(true);
                 }else{
                     bot.isAttackHit(false);
-                } 
+                }
+                P1.scrollIntoView(); 
             })
         }
         const result = await stage2.battle(player1Board,player2Board);
